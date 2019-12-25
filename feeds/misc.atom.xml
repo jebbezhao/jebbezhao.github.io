@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jebbe Blog - misc</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2019-12-26T00:00:00+08:00</updated><entry><title>Blog使用方式</title><link href="/blogshi-yong-fang-shi.html" rel="alternate"></link><published>2019-12-26T00:00:00+08:00</published><updated>2019-12-26T00:00:00+08:00</updated><author><name>Jebbe</name></author><id>tag:None,2019-12-26:/blogshi-yong-fang-shi.html</id><summary type="html">&lt;h2&gt;圣诞节的第一篇博客&lt;/h2&gt;
+&lt;h1&gt;Install Pelican and create the repo&lt;/h1&gt;
+&lt;p&gt;First things first, Pelican (and ghp-import) must be installed on your local machine. This is super easy with pip, the Python package installation tool (you have pip right?):&lt;/p&gt;
+&lt;p&gt;'''
+$ pip install pelican ghp-import Markdown
+'''&lt;/p&gt;
+&lt;p&gt;Next, open a browser and create a new repository on …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;圣诞节的第一篇博客&lt;/h2&gt;
+&lt;h1&gt;Install Pelican and create the repo&lt;/h1&gt;
+&lt;p&gt;First things first, Pelican (and ghp-import) must be installed on your local machine. This is super easy with pip, the Python package installation tool (you have pip right?):&lt;/p&gt;
+&lt;p&gt;'''
+$ pip install pelican ghp-import Markdown
+'''&lt;/p&gt;
+&lt;p&gt;Next, open a browser and create a new repository on GitHub for your sweet new blog. Name it as follows (substituting your GitHub username for &lt;username&gt; here and throughout this tutorial):&lt;/p&gt;
+&lt;p&gt;'''
+https://GitHub.com/username/username.github.io
+'''&lt;/p&gt;
+&lt;p&gt;Leave it empty; we will fill it with compelling blog content in a moment.&lt;/p&gt;
+&lt;p&gt;Using a command line (you command line right?), clone your empty Git repository to your local machine:&lt;/p&gt;
+&lt;p&gt;'''
+$ git clone https://GitHub.com/username/username.github.io blog
+$ cd blog
+'''&lt;/p&gt;
+&lt;h1&gt;That one weird trick…&lt;/h1&gt;
+&lt;p&gt;Here's a not-super-obvious trick about publishing web content on GitHub. For user pages (pages hosted in repos named username.github.io), the content is served from the master branch.&lt;/p&gt;
+&lt;p&gt;I strongly prefer not to keep all the Pelican configuration files and raw Markdown files in master, rather just the web content. So I keep the Pelican configuration and the raw content in a separate branch I like to call content. (You can call it whatever you want, but the following instructions will call it content.) I like this structure since I can throw away all the files in master and re-populate it with the content branch.&lt;/p&gt;
+&lt;p&gt;'''
+$ git checkout -b content
+Switched to a new branch 'content'
+'''&lt;/p&gt;
+&lt;h1&gt;Configure Pelican&lt;/h1&gt;
+&lt;p&gt;Now it's time for content configuration. Pelican provides a great initialization tool called pelican-quickstart that will ask you a series of questions about your blog.&lt;/p&gt;
+&lt;p&gt;'''
+$ pelican-quickstart
+Welcome to pelican-quickstart v3.7.1.&lt;/p&gt;
+&lt;p&gt;This script will help you create a new Pelican-based website.&lt;/p&gt;
+&lt;p&gt;Please answer the following questions so this script can generate the files
+needed by Pelican.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Where do you want to create your new web site? [.]&lt;br&gt;
+What will be the title of this web site? Super blog
+Who will be the author of this web site? username
+What will be the default language of this web site? [en]
+Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) n
+Do you want to enable article pagination? (Y/n)
+How many articles per page do you want? [10]
+What is your time zone? [Europe/Paris] US/Central
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) y
+Do you want an auto-reload &amp;amp; simpleHTTP script to assist with theme and site development? (Y/n) y
+Do you want to upload your website using FTP? (y/N) n
+Do you want to upload your website using SSH? (y/N) n
+Do you want to upload your website using Dropbox? (y/N) n
+Do you want to upload your website using S3? (y/N) n
+Do you want to upload your website using Rackspace Cloud Files? (y/N) n
+Do you want to upload your website using GitHub Pages? (y/N) y
+Is this your personal page (username.github.io)? (y/N) y
+Done. Your new project is available at /Users/username/blog
+'''&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can take the defaults on every question except:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Website title, which should be unique and special&lt;/li&gt;
+&lt;li&gt;Website author, which can be a personal username or your full name&lt;/li&gt;
+&lt;li&gt;Time zone, which may not be in Paris&lt;/li&gt;
+&lt;li&gt;Upload to GitHub Pages, which is a "y" in our case&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After answering all the questions, Pelican leaves the following in the current directory:
+'''
+$ ls
+Makefile                content/        develop_server.sh*
+fabfile.py              output/         pelicanconf.py
+publishconf.py
+'''&lt;/p&gt;
+&lt;p&gt;You can check out the Pelican docs to find out how to use those files, but we're all about getting things done right now. No, I haven't read the docs yet either.&lt;/p&gt;
+&lt;h1&gt;Forge on&lt;/h1&gt;
+&lt;p&gt;Add all the Pelican-generated files to the content branch of the local Git repo, commit the changes, and push the local changes to the remote repo hosted on GitHub by entering:&lt;/p&gt;
+&lt;p&gt;'''
+$ git add .
+$ git commit -m 'initial pelican commit to content'
+$ git push origin content
+'''&lt;/p&gt;
+&lt;p&gt;This isn't super exciting, but it will be handy if we need to revert edits to one of these files.&lt;/p&gt;
+&lt;h1&gt;Finally getting somewhere&lt;/h1&gt;
+&lt;p&gt;OK, now you can get bloggy! All of your blog posts, photos, images, PDFs, etc., will live in the content directory, which is initially empty. To begin creating a first post and an About page with a photo, enter:&lt;/p&gt;
+&lt;p&gt;'''
+$ cd content
+$ mkdir pages images
+$ cp /Users/username/SecretStash/HotPhotoOfMe.jpg images
+$ touch first-post.md
+$ touch pages/about.md
+'''&lt;/p&gt;
+&lt;p&gt;Next, open the empty file first-post.md in your favorite text editor and add the following:&lt;/p&gt;
+&lt;p&gt;'''
+title: First Post on My Sweet New Blog
+date: &lt;today's date&gt;
+author: Your Name Here&lt;/p&gt;
+&lt;h1&gt;I am On My Way To Internet Fame and Fortune!&lt;/h1&gt;
+&lt;p&gt;This is my first post on my new blog. While not super informative it
+should convey my sense of excitement and eagerness to engage with you,
+the reader!
+The first three lines contain metadata that Pelican uses to organize things. There are lots of different metadata you can put there; again, the docs are your best bet for learning more about the options.&lt;/p&gt;
+&lt;p&gt;Now, open the empty file pages/about.md and add this text:&lt;/p&gt;
+&lt;p&gt;title: About
+date: &lt;today's date&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="So Schmexy" src="/images/HotPhotoOfMe.jpg" title="'"&gt;&lt;/p&gt;
+&lt;p&gt;Hi, I am &lt;username&gt; and I wrote this epic collection of Interweb
+wisdom. In days of yore, much of this would have been deemed sorcery
+and I would probably have been burned at the stake.&lt;/p&gt;
+&lt;p&gt;😆&lt;/p&gt;
+&lt;p&gt;You now have three new pieces of web content in your content directory. Of the content branch. That's a lot of content.&lt;/p&gt;
+&lt;h1&gt;Publish&lt;/h1&gt;
+&lt;p&gt;Don't worry; the payoff is coming!&lt;/p&gt;
+&lt;p&gt;All that's left to do is:&lt;/p&gt;
+&lt;p&gt;Run Pelican to generate the static HTML files in output:&lt;/p&gt;
+&lt;p&gt;'''
+$ pelican content -o output -s publishconf.py
+'''&lt;/p&gt;
+&lt;p&gt;Use ghp-import to add the contents of the output directory to the master branch:&lt;/p&gt;
+&lt;p&gt;'''
+$ ghp-import -m "Generate Pelican site" --no-jekyll -b master output
+'''&lt;/p&gt;
+&lt;p&gt;Push the local master branch to the remote repo:&lt;/p&gt;
+&lt;p&gt;'''
+$ git push origin master
+Commit and push the new content to the content branch:
+$ git add content
+$ git commit -m 'added a first post, a photo and an about page'
+$ git push origin content
+'''&lt;/p&gt;</content><category term="misc"></category></entry></feed>
