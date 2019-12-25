@@ -1,144 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Jebbe Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Jebbe">
+<html lang="zh">
 
-    <!-- Le styles -->
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-2 {
-        font-size: 8pt;
-      }
-      .tag-4 {
-        font-size: 6pt;
-     }
-    </style>
-    <link href="/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="icon" type="image/vnd.microsoft.icon" href="/">
+  <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Mono">
+  <link rel="stylesheet" type="text/css" href="/theme/css/fontawesome-all.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/hatena-bookmark-icon.css">
 
-    <link href="/theme/css/pygments.css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Jebbe">
+  <meta name="description" content="Posts and writings by Jebbe">
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="/theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png">
+  <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jebbe Blog Atom" />
 
-    <link href="/" type="application/atom+xml" rel="alternate" title="Jebbe Blog ATOM Feed" />
 
-  </head>
+  <title>
+    Jebbe Blog
+&ndash; Archives  </title>
 
-  <body>
+</head>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/index.html">Jebbe Blog </a>
-          <div class="nav-collapse">
-            <ul class="nav">
-                          <li class="divider-vertical"></li>
-                  <li >
-                    <a href="/category/misc.html">
-						<i class="icon-folder-open icon-large"></i>misc
-					</a>
-                  </li>
-
-                          <ul class="nav pull-right">
-                                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
-                          </ul>
-
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
-        </div>
+<body>
+  <main>
+    <header>
+      <div class="site-name">
+        <a href="">Jebbe Blog</a>
       </div>
-    </div>
+      <p>
+        <a href="/archives.html"><i class="fab fas-archive"></i> Archive</a>
+      </p>
+    </header>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="span9" id="content">
-<section id="content">
-<h1>Archives for Jebbe Blog</h1>
-
-<dl>
-	<dt>2019-12-26</dt>
-	<dd><a href='blogshi-yong-fang-shi.html'>Blog使用方式</a></dd>
-</dl>
-</section>
-        </div><!--/span-->
-
-                <div class="span3 well sidebar-nav" id="sidebar">
-<ul class="nav nav-list">
-<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
-    <li><a href="https://github.com/CheihChiu/HDiffPatch"><i class="icon-external-link"></i>HDiffPatch</a></li>
-    <li><a href="https://github.com/CheihChiu/amazon_captcha_break"><i class="icon-external-link"></i>亚马逊验证码破解</a></li>
-    <li><a href="https://github.com/CheihChiu/Qigsaw"><i class="icon-external-link"></i>Qigsaw</a></li>
-    <li><a href="#"><i class="icon-external-link"></i>等待更多</a></li>
-<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
-<li><a href="/feeds/all.atom.xml" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
-    <li><a href="zhaojierb#qq.com"><i class="icon-邮箱-sign icon-large"></i>邮箱</a></li>
-    <li><a href="#"><i class="icon-其他-sign icon-large"></i>其他</a></li>
-
-<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
-<li>
-<a href="/category/misc.html">
-    <i class="icon-folder-open icon-large"></i>misc
-</a>
-</li>
-
-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+<article>
+  <div class="article__text">
+    <dl>
+      <dt>2019-12-26</dt>
+      <dd><a href="/blogshi-yong-fang-shi.html">Blog使用方式</a></dd>
+    </dl>
+  </div>
+</article>
 
 
-</ul>        </div><!--/.well -->
-
-      </div><!--/row-->
-
-      <hr>
-
-      <footer>
-        <address id="about">
-                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
-                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
-        </address><!-- /#about -->
-
-        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
-                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
-
-
-
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/theme/js/jquery-1.7.2.min.js"></script>
-    <script src="/theme/js/bootstrap.min.js"></script>
-  </body>
+  </main>
+    <footer>
+      <div class="author__logo">
+          <img src="/theme/images/logo.png" alt="logo">
+      </div>
+      <section class="author">
+        <div class="author__name">
+          <a href="/pages/about.html">Jebbe</a>
+          <p></p>
+        </div>
+        <div class="author__link">
+          <ul>
+            <li><a href="https://github.com/CheihChiu/HDiffPatch" title="HDiffPatch"><i class="fab fa-link"></i></a></li>
+            <li><a href="https://github.com/CheihChiu/amazon_captcha_break" title="亚马逊验证码破解"><i class="fab fa-link"></i></a></li>
+            <li><a href="https://github.com/CheihChiu/Qigsaw" title="Qigsaw"><i class="fab fa-link"></i></a></li>
+            <li><a href="#" title="等待更多"><i class="fab fa-link"></i></a></li>
+            <li>
+              <a href="zhaojierb#qq.com" target="_blank" title="邮箱">
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" title="其他">
+              </a>
+            </li>
+            <li>
+              <a href="/feeds/all.atom.xml" target="_blank" title="Feed">
+                <i class="fas fa-rss-square"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div class="ending-message">
+        <p>&copy; Jebbe. Powered by <a href="http://getpelican.com" target="_blank">Pelican</a>, Theme is using <a href="https://github.com/laughk/pelican-hss" target="_blank">HSS</a>. </p>
+      </div>
+    </footer>
+</body>
 </html>
