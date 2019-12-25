@@ -31,55 +31,61 @@
 </footer><!-- /.post-info --><h2>圣诞节的第一篇博客</h2>
 <h1>Install Pelican and create the repo</h1>
 <p>First things first, Pelican (and ghp-import) must be installed on your local machine. This is super easy with pip, the Python package installation tool (you have pip right?):</p>
-<p>'''
-$ pip install pelican ghp-import Markdown
-'''</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="nn">Markdown</span>
+</pre></div>
+
+
 <p>Next, open a browser and create a new repository on GitHub for your sweet new blog. Name it as follows (substituting your GitHub username for <username> here and throughout this tutorial):</p>
-<p>'''
-https://GitHub.com/username/username.github.io
-'''</p>
+<div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">GitHub</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">username</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span>
+</pre></div>
+
+
 <p>Leave it empty; we will fill it with compelling blog content in a moment.</p>
 <p>Using a command line (you command line right?), clone your empty Git repository to your local machine:</p>
-<p>'''
-$ git clone https://GitHub.com/username/username.github.io blog
-$ cd blog
-'''</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">GitHub</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">username</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span> <span class="n">blog</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">blog</span>
+</pre></div>
+
+
 <h1>That one weird trick…</h1>
 <p>Here's a not-super-obvious trick about publishing web content on GitHub. For user pages (pages hosted in repos named username.github.io), the content is served from the master branch.</p>
 <p>I strongly prefer not to keep all the Pelican configuration files and raw Markdown files in master, rather just the web content. So I keep the Pelican configuration and the raw content in a separate branch I like to call content. (You can call it whatever you want, but the following instructions will call it content.) I like this structure since I can throw away all the files in master and re-populate it with the content branch.</p>
-<p>'''
-$ git checkout -b content
-Switched to a new branch 'content'
-'''</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">content</span>
+<span class="n">Switched</span> <span class="n">to</span> <span class="n">a</span> <span class="n">new</span> <span class="n">branch</span> <span class="s1">&#39;content&#39;</span>
+</pre></div>
+
+
 <h1>Configure Pelican</h1>
 <p>Now it's time for content configuration. Pelican provides a great initialization tool called pelican-quickstart that will ask you a series of questions about your blog.</p>
-<p>'''
-$ pelican-quickstart
-Welcome to pelican-quickstart v3.7.1.</p>
-<p>This script will help you create a new Pelican-based website.</p>
-<p>Please answer the following questions so this script can generate the files
-needed by Pelican.</p>
-<blockquote>
-<p>Where do you want to create your new web site? [.]<br>
-What will be the title of this web site? Super blog
-Who will be the author of this web site? username
-What will be the default language of this web site? [en]
-Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) n
-Do you want to enable article pagination? (Y/n)
-How many articles per page do you want? [10]
-What is your time zone? [Europe/Paris] US/Central
-Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) y
-Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n) y
-Do you want to upload your website using FTP? (y/N) n
-Do you want to upload your website using SSH? (y/N) n
-Do you want to upload your website using Dropbox? (y/N) n
-Do you want to upload your website using S3? (y/N) n
-Do you want to upload your website using Rackspace Cloud Files? (y/N) n
-Do you want to upload your website using GitHub Pages? (y/N) y
-Is this your personal page (username.github.io)? (y/N) y
-Done. Your new project is available at /Users/username/blog
-'''</p>
-</blockquote>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
+<span class="n">Welcome</span> <span class="n">to</span> <span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span> <span class="n">v3</span><span class="o">.</span><span class="mf">7.1</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="n">script</span> <span class="n">will</span> <span class="n">help</span> <span class="n">you</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">Pelican</span><span class="o">-</span><span class="n">based</span> <span class="n">website</span><span class="o">.</span>
+
+<span class="n">Please</span> <span class="n">answer</span> <span class="n">the</span> <span class="n">following</span> <span class="n">questions</span> <span class="n">so</span> <span class="n">this</span> <span class="n">script</span> <span class="n">can</span> <span class="n">generate</span> <span class="n">the</span> <span class="n">files</span>
+<span class="n">needed</span> <span class="n">by</span> <span class="n">Pelican</span><span class="o">.</span>
+
+<span class="o">&gt;</span> <span class="n">Where</span> <span class="n">do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">create</span> <span class="n">your</span> <span class="n">new</span> <span class="n">web</span> <span class="n">site</span><span class="err">?</span> <span class="p">[</span><span class="o">.</span><span class="p">]</span>  
+<span class="o">&gt;</span> <span class="n">What</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="n">title</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="err">?</span> <span class="n">Super</span> <span class="n">blog</span>
+<span class="o">&gt;</span> <span class="n">Who</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="n">author</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="err">?</span> <span class="n">username</span>
+<span class="o">&gt;</span> <span class="n">What</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="n">default</span> <span class="n">language</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="err">?</span> <span class="p">[</span><span class="n">en</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">a</span> <span class="n">URL</span> <span class="n">prefix</span><span class="err">?</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>   <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="n">n</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">article</span> <span class="n">pagination</span><span class="err">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">How</span> <span class="n">many</span> <span class="n">articles</span> <span class="n">per</span> <span class="n">page</span> <span class="n">do</span> <span class="n">you</span> <span class="n">want</span><span class="err">?</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">What</span> <span class="ow">is</span> <span class="n">your</span> <span class="n">time</span> <span class="n">zone</span><span class="err">?</span> <span class="p">[</span><span class="n">Europe</span><span class="o">/</span><span class="n">Paris</span><span class="p">]</span> <span class="n">US</span><span class="o">/</span><span class="n">Central</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">a</span> <span class="n">Fabfile</span><span class="o">/</span><span class="n">Makefile</span> <span class="n">to</span> <span class="n">automate</span> <span class="n">generation</span> <span class="ow">and</span> <span class="n">publishing</span><span class="err">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="n">y</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">an</span> <span class="n">auto</span><span class="o">-</span><span class="n">reload</span> <span class="o">&amp;</span> <span class="n">simpleHTTP</span> <span class="n">script</span> <span class="n">to</span> <span class="n">assist</span> <span class="k">with</span> <span class="n">theme</span> <span class="ow">and</span> <span class="n">site</span> <span class="n">development</span><span class="err">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="n">y</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">FTP</span><span class="err">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="n">n</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">SSH</span><span class="err">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="n">n</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">Dropbox</span><span class="err">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="n">n</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">S3</span><span class="err">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="n">n</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">Rackspace</span> <span class="n">Cloud</span> <span class="n">Files</span><span class="err">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="n">n</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">GitHub</span> <span class="n">Pages</span><span class="err">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="n">y</span>
+<span class="o">&gt;</span> <span class="n">Is</span> <span class="n">this</span> <span class="n">your</span> <span class="n">personal</span> <span class="n">page</span> <span class="p">(</span><span class="n">username</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="err">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="n">y</span>
+<span class="n">Done</span><span class="o">.</span> <span class="n">Your</span> <span class="n">new</span> <span class="n">project</span> <span class="ow">is</span> <span class="n">available</span> <span class="n">at</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">blog</span>
+</pre></div>
+
+
 <p>You can take the defaults on every question except:</p>
 <ul>
 <li>Website title, which should be unique and special</li>
@@ -87,69 +93,84 @@ Done. Your new project is available at /Users/username/blog
 <li>Time zone, which may not be in Paris</li>
 <li>Upload to GitHub Pages, which is a "y" in our case</li>
 </ul>
-<p>After answering all the questions, Pelican leaves the following in the current directory:
-'''
-$ ls
-Makefile                content/        develop_server.sh*
-fabfile.py              output/         pelicanconf.py
-publishconf.py
-'''</p>
+<p>After answering all the questions, Pelican leaves the following in the current directory:</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ls</span>
+<span class="n">Makefile</span>                <span class="n">content</span><span class="o">/</span>        <span class="n">develop_server</span><span class="o">.</span><span class="n">sh</span><span class="o">*</span>
+<span class="n">fabfile</span><span class="o">.</span><span class="n">py</span>              <span class="n">output</span><span class="o">/</span>         <span class="n">pelicanconf</span><span class="o">.</span><span class="n">py</span>
+<span class="n">publishconf</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+
+
 <p>You can check out the Pelican docs to find out how to use those files, but we're all about getting things done right now. No, I haven't read the docs yet either.</p>
 <h1>Forge on</h1>
 <p>Add all the Pelican-generated files to the content branch of the local Git repo, commit the changes, and push the local changes to the remote repo hosted on GitHub by entering:</p>
-<p>'''
-$ git add .
-$ git commit -m 'initial pelican commit to content'
-$ git push origin content
-'''</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;initial pelican commit to content&#39;</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">content</span>
+</pre></div>
+
+
 <p>This isn't super exciting, but it will be handy if we need to revert edits to one of these files.</p>
 <h1>Finally getting somewhere</h1>
 <p>OK, now you can get bloggy! All of your blog posts, photos, images, PDFs, etc., will live in the content directory, which is initially empty. To begin creating a first post and an About page with a photo, enter:</p>
-<p>'''
-$ cd content
-$ mkdir pages images
-$ cp /Users/username/SecretStash/HotPhotoOfMe.jpg images
-$ touch first-post.md
-$ touch pages/about.md
-'''</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">cd</span> <span class="n">content</span>
+<span class="err">$</span> <span class="n">mkdir</span> <span class="n">pages</span> <span class="n">images</span>
+<span class="err">$</span> <span class="n">cp</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">SecretStash</span><span class="o">/</span><span class="n">HotPhotoOfMe</span><span class="o">.</span><span class="n">jpg</span> <span class="n">images</span>
+<span class="err">$</span> <span class="n">touch</span> <span class="n">first</span><span class="o">-</span><span class="n">post</span><span class="o">.</span><span class="n">md</span>
+<span class="err">$</span> <span class="n">touch</span> <span class="n">pages</span><span class="o">/</span><span class="n">about</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+
+
 <p>Next, open the empty file first-post.md in your favorite text editor and add the following:</p>
-<p>'''
-title: First Post on My Sweet New Blog
-date: <today's date>
-author: Your Name Here</p>
-<h1>I am On My Way To Internet Fame and Fortune!</h1>
-<p>This is my first post on my new blog. While not super informative it
-should convey my sense of excitement and eagerness to engage with you,
-the reader!
-The first three lines contain metadata that Pelican uses to organize things. There are lots of different metadata you can put there; again, the docs are your best bet for learning more about the options.</p>
-<p>Now, open the empty file pages/about.md and add this text:</p>
-<p>title: About
-date: <today's date></p>
-<p><img alt="So Schmexy" src="/images/HotPhotoOfMe.jpg" title="'"></p>
-<p>Hi, I am <username> and I wrote this epic collection of Interweb
-wisdom. In days of yore, much of this would have been deemed sorcery
-and I would probably have been burned at the stake.</p>
-<p>😆</p>
+<div class="highlight"><pre><span></span><span class="n">title</span><span class="p">:</span> <span class="n">First</span> <span class="n">Post</span> <span class="n">on</span> <span class="n">My</span> <span class="n">Sweet</span> <span class="n">New</span> <span class="n">Blog</span>
+<span class="n">date</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">today</span><span class="s1">&#39;s date&gt;</span>
+<span class="n">author</span><span class="p">:</span> <span class="n">Your</span> <span class="n">Name</span> <span class="n">Here</span>
+
+<span class="c1"># I am On My Way To Internet Fame and Fortune!</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">post</span> <span class="n">on</span> <span class="n">my</span> <span class="n">new</span> <span class="n">blog</span><span class="o">.</span> <span class="n">While</span> <span class="ow">not</span> <span class="nb">super</span> <span class="n">informative</span> <span class="n">it</span>
+<span class="n">should</span> <span class="n">convey</span> <span class="n">my</span> <span class="n">sense</span> <span class="n">of</span> <span class="n">excitement</span> <span class="ow">and</span> <span class="n">eagerness</span> <span class="n">to</span> <span class="n">engage</span> <span class="k">with</span> <span class="n">you</span><span class="p">,</span>
+<span class="n">the</span> <span class="n">reader</span><span class="err">!</span>
+<span class="n">The</span> <span class="n">first</span> <span class="n">three</span> <span class="n">lines</span> <span class="n">contain</span> <span class="n">metadata</span> <span class="n">that</span> <span class="n">Pelican</span> <span class="n">uses</span> <span class="n">to</span> <span class="n">organize</span> <span class="n">things</span><span class="o">.</span> <span class="n">There</span> <span class="n">are</span> <span class="n">lots</span> <span class="n">of</span> <span class="n">different</span> <span class="n">metadata</span> <span class="n">you</span> <span class="n">can</span> <span class="n">put</span> <span class="n">there</span><span class="p">;</span> <span class="n">again</span><span class="p">,</span> <span class="n">the</span> <span class="n">docs</span> <span class="n">are</span> <span class="n">your</span> <span class="n">best</span> <span class="n">bet</span> <span class="k">for</span> <span class="n">learning</span> <span class="n">more</span> <span class="n">about</span> <span class="n">the</span> <span class="n">options</span><span class="o">.</span>
+
+<span class="n">Now</span><span class="p">,</span> <span class="nb">open</span> <span class="n">the</span> <span class="n">empty</span> <span class="n">file</span> <span class="n">pages</span><span class="o">/</span><span class="n">about</span><span class="o">.</span><span class="n">md</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">this</span> <span class="n">text</span><span class="p">:</span>
+
+<span class="n">title</span><span class="p">:</span> <span class="n">About</span>
+<span class="n">date</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">today</span><span class="s1">&#39;s date&gt;</span>
+
+<span class="err">!</span><span class="p">[</span><span class="n">So</span> <span class="n">Schmexy</span><span class="p">][</span><span class="n">my_sweet_photo</span><span class="p">]</span>
+
+<span class="n">Hi</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="ow">and</span> <span class="n">I</span> <span class="n">wrote</span> <span class="n">this</span> <span class="n">epic</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">Interweb</span>
+<span class="n">wisdom</span><span class="o">.</span> <span class="n">In</span> <span class="n">days</span> <span class="n">of</span> <span class="n">yore</span><span class="p">,</span> <span class="n">much</span> <span class="n">of</span> <span class="n">this</span> <span class="n">would</span> <span class="n">have</span> <span class="n">been</span> <span class="n">deemed</span> <span class="n">sorcery</span>
+<span class="ow">and</span> <span class="n">I</span> <span class="n">would</span> <span class="n">probably</span> <span class="n">have</span> <span class="n">been</span> <span class="n">burned</span> <span class="n">at</span> <span class="n">the</span> <span class="n">stake</span><span class="o">.</span>
+
+<span class="err">😆</span>
+
+<span class="p">[</span><span class="n">my_sweet_photo</span><span class="p">]:</span> <span class="p">{</span><span class="n">static</span><span class="p">}</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">HotPhotoOfMe</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+
+
 <p>You now have three new pieces of web content in your content directory. Of the content branch. That's a lot of content.</p>
 <h1>Publish</h1>
 <p>Don't worry; the payoff is coming!</p>
 <p>All that's left to do is:</p>
 <p>Run Pelican to generate the static HTML files in output:</p>
-<p>'''
-$ pelican content -o output -s publishconf.py
-'''</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pelican</span> <span class="n">content</span> <span class="o">-</span><span class="n">o</span> <span class="n">output</span> <span class="o">-</span><span class="n">s</span> <span class="n">publishconf</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+
+
 <p>Use ghp-import to add the contents of the output directory to the master branch:</p>
-<p>'''
-$ ghp-import -m "Generate Pelican site" --no-jekyll -b master output
-'''</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Generate Pelican site&quot;</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">jekyll</span> <span class="o">-</span><span class="n">b</span> <span class="n">master</span> <span class="n">output</span>
+</pre></div>
+
+
 <p>Push the local master branch to the remote repo:</p>
-<p>'''
-$ git push origin master
-Commit and push the new content to the content branch:
-$ git add content
-$ git commit -m 'added a first post, a photo and an about page'
-$ git push origin content
-'''</p>                </article>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+<span class="n">Commit</span> <span class="ow">and</span> <span class="n">push</span> <span class="n">the</span> <span class="n">new</span> <span class="n">content</span> <span class="n">to</span> <span class="n">the</span> <span class="n">content</span> <span class="n">branch</span><span class="p">:</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">content</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;added a first post, a photo and an about page&#39;</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">content</span>
+</pre></div>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">
